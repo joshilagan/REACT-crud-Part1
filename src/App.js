@@ -37,6 +37,14 @@ function App() {
     setNewDescription(event.target.value);
   }
 
+  const createPost = () => {
+    const newPost = {
+      title: newTitle,
+      description: newDescription,
+    }
+
+    setBlogContent([...blogContent, newPost])
+  }
 
   return (
     <div className="App">
@@ -52,7 +60,7 @@ function App() {
           <label htmlFor='description'>Description:</label>
           <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2}></textarea>
           <div>
-            <button>Create</button> <button>Edit</button>
+            <button onClick={createPost}>Create</button> <button>Edit</button>
           </div>
         </div>
       </div>
