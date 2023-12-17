@@ -33,6 +33,9 @@ function App() {
   const handleChange1 = (event) => {
     setNewTitle(event.target.value);
   }
+  const handleChange2 = (event) => {
+    setNewDescription(event.target.value);
+  }
 
 
   return (
@@ -47,7 +50,7 @@ function App() {
           <label htmlFor='title'>Title:</label>
           <input type="text" id='title' onChange={handleChange1}/>
           <label htmlFor='description'>Description:</label>
-          <textarea name="" id="description" cols="30" rows="5"></textarea>
+          <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2}></textarea>
           <div>
             <button>Create</button> <button>Edit</button>
           </div>
