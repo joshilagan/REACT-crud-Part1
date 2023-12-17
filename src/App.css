@@ -1,9 +1,51 @@
 .App {
   text-align: center;
-  display: flex;
   margin: 20px 20px;
+  margin: auto;
 }
 
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.left{
+  width: 60%;
+}
+
+.right{
+  width: 40%;
+}
+
+.postManagement {
+  display: flex;
+}
+
+.cards {
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 500px;
+  padding: 15px;
+  padding-top: 4px;
+  margin-bottom: 10px;
+}
+
+.createEdit {
+  padding: 15px;
+  padding-top: 0;
+  margin-bottom: 10px;
+}
+.manageTexts {
+  border: 1px solid gray;
+  border-radius: 10px;
+  text-align: start;
+  padding: 15px;  
+}
+
+.deleteButtonDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+h3 {
+  margin: 0;
 }

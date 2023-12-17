@@ -28,28 +28,42 @@ function App() {
   ])
   return (
     <div className="App">
-      <section>
-        <p>Title:</p>
-        <p>Description:</p>
-        <button>Post</button>
+      <h1>Manage Posts</h1>
+      <div className='postManagement'>
+
+      <section className='left'>
+      <div className='createEdit'>
+        
+        <div className='manageTexts'>
+          <p>Title:</p>
+          <p>Description:</p>
+          <div>
+            <button>Create</button> <button>Edit</button>
+          </div>
+        </div>
+      </div>
       </section>
 
 
-      <section>
-        <h1>POSTS</h1>
+      <section className='right'>
+        
         
           {blogContent.map((task, key)=>{
             return(
               <div className='cards'>
-              <h3>{task.title}</h3>
-              <p>{task.description}</p>
-              <p className='readmore'>Read more...</p>
+                <div className='deleteButtonDiv'>
+                  <button className='deleteButton'>x</button>
+                </div>
+                <h3>{task.title}</h3>
+                <p>{task.description}</p>
+                <p className='readmore'>Read more...</p>
           </div>
             )
-          })}
-          
+          })}         
         
       </section>
+
+      </div>
     </div>
   );
 }
