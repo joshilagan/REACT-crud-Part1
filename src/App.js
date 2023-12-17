@@ -26,6 +26,15 @@ function App() {
     description : "Being a teenager in 2023 is not easy, but also exciting. You have to face many challenges, such as academic pressure, social media, climate change, and mental health. But you also have many opportunities, such as online learning, digital entrepreneurship, social activism, and innovation. In this article, we will discuss some of the challenges and opportunities of being a teenager in 2023 and how to make the most of them.",
     }
   ])
+
+  const [newTitle, setNewTitle] = useState("")
+  const [newDescription, setNewDescription] = useState("")
+
+  const handleChange1 = (event) => {
+    setNewTitle(event.target.value);
+  }
+
+
   return (
     <div className="App">
       <h1>Manage Posts</h1>
@@ -35,8 +44,10 @@ function App() {
       <div className='createEdit'>
         
         <div className='manageTexts'>
-          <p>Title:</p>
-          <p>Description:</p>
+          <label htmlFor='title'>Title:</label>
+          <input type="text" id='title' onChange={handleChange1}/>
+          <label htmlFor='description'>Description:</label>
+          <textarea name="" id="description" cols="30" rows="5"></textarea>
           <div>
             <button>Create</button> <button>Edit</button>
           </div>

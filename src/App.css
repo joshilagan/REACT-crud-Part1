@@ -39,6 +39,8 @@ body{
   border-radius: 10px;
   text-align: start;
   padding: 15px;  
+  display: flex;
+  flex-direction: column;
 }
 
 .deleteButtonDiv {
