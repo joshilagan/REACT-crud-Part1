@@ -54,11 +54,24 @@ function App() {
   }
 
   const dels = (id) => {
+    //filter() method will return indexes determined to be true
     const newContent = blogContent.filter((task)=>{
       return task.id !== id;
     })
     setBlogContent(newContent)
-    }
+  }
+
+  const edit = (id, title, description) => {
+    console.log(id,title,description);
+    const idToBeEdited = blogContent.find((content) => content.id === id)
+     console.log(` ${title}success`);
+     if (newTitle) idToBeEdited.title = newTitle;
+     if (newDescription) idToBeEdited.description = newDescription;
+     const filteredArray = blogContent.filter((content) => content.id !== id)
+     const unsortedArray = [...filteredArray, idToBeEdited]
+     console.log(unsortedArray);
+     setBlogContent(unsortedArray)
+  }
   
 
 
@@ -76,7 +89,7 @@ function App() {
           <label htmlFor='description'>Description:</label>
           <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2}></textarea>
           <div>
-            <button onClick={createPost}>Create</button> <button>Edit</button>
+            <button onClick={createPost}>Create</button> 
           </div>
         </div>
       </div>
@@ -88,9 +101,9 @@ function App() {
         
           {blogContent.map((task, key)=>{
             return(
-              <div className='cards'>
+              <div className='cards' key={key}>
                 <div className='deleteButtonDiv'>
-                  <button className='deleteButton'onClick={() => dels(task.id)}>x</button>
+                <button onClick={()=>edit(task.id, task.title, task.description)}>Edit</button><button className='deleteButton'onClick={() => dels(task.id)}>x</button>
                 </div>
                 <h3>{task.title}</h3>
                 <p>{task.description}</p>
