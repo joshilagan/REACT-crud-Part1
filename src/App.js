@@ -53,6 +53,7 @@ function App() {
       title: newTitle,
       description: newDescription,
     }
+    //use spread operator to combine newPost to blogContent
     setBlogContent([...blogContent, newPost])
   }
 
@@ -72,21 +73,23 @@ function App() {
     setEditedId(id)
   }
 
+    // using the info from the edit function, update the blog card
     const updatePost = () => {
+    //use find() method to look for the id in the blogContent arrayObject using the editedId variable
     const idToBeEdited = blogContent.find((content) => content.id === editedId)
      console.log(` ${newTitle}success`);
-    //  if (newTitle === "") {
-    //   alert('Please write a title on the title box');
-    //  }else {
+      //if there is newTitle, assign it as title to the idToBeEdited object variable
       if (newTitle) idToBeEdited.title = newTitle;
+      //if there is newDescription, assign it as description to the idToBeEdited object variable
       if (newDescription) idToBeEdited.description = newDescription;
+      //filter the blogContent array excluding the editedId index
+      //filter() method will return indexes determined to be true
       const filteredArray = blogContent.filter((content) => content.id !== editedId)
-      const unsortedArray = [...filteredArray, idToBeEdited]
-      console.log(unsortedArray);
+      //use spread operator to combine the idToBeEdited index into the filteredArray arrayobject
+      const unsortedArray = [...filteredArray, idToBeEdited]     
+      //use sort method to sort the entire array in ascending order using the array's id
       setBlogContent(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
-    //  }
-    
-  }
+    }
   
 
 
