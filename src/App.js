@@ -65,12 +65,17 @@ function App() {
     console.log(id,title,description);
     const idToBeEdited = blogContent.find((content) => content.id === id)
      console.log(` ${title}success`);
-     if (newTitle) idToBeEdited.title = newTitle;
-     if (newDescription) idToBeEdited.description = newDescription;
-     const filteredArray = blogContent.filter((content) => content.id !== id)
-     const unsortedArray = [...filteredArray, idToBeEdited]
-     console.log(unsortedArray);
-     setBlogContent(unsortedArray)
+     if (newTitle === "") {
+      alert('Please write a title on the title box');
+     }else {
+      if (newTitle) idToBeEdited.title = newTitle;
+      if (newDescription) idToBeEdited.description = newDescription;
+      const filteredArray = blogContent.filter((content) => content.id !== id)
+      const unsortedArray = [...filteredArray, idToBeEdited]
+      console.log(unsortedArray);
+      setBlogContent(unsortedArray)
+     }
+    
   }
   
 
