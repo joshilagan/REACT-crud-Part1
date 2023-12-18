@@ -33,6 +33,9 @@ function App() {
 
   const [newTitle, setNewTitle] = useState("")
   const [newDescription, setNewDescription] = useState("")
+  const [editedTitle, setEditedTitle] = useState("")
+  const [editedDescription, setEditedDescription] = useState("")
+  const [editedId, setEditedId] = useState("")
 
   const handleChange1 = (event) => {
     setNewTitle(event.target.value);
@@ -61,20 +64,27 @@ function App() {
     setBlogContent(newContent)
   }
 
-  const edit = (id, title, description) => {
-    console.log(id,title,description);
-    const idToBeEdited = blogContent.find((content) => content.id === id)
-     console.log(` ${title}success`);
-     if (newTitle === "") {
-      alert('Please write a title on the title box');
-     }else {
+  //get the value of the card id, title and description and save it to a variable
+  //set these variables as default values of Input Title and Description Text
+  const edit = (id, title, description) => {   
+    setEditedTitle(title)
+    setEditedDescription(description)
+    setEditedId(id)
+  }
+
+    const updatePost = () => {
+    const idToBeEdited = blogContent.find((content) => content.id === editedId)
+     console.log(` ${newTitle}success`);
+    //  if (newTitle === "") {
+    //   alert('Please write a title on the title box');
+    //  }else {
       if (newTitle) idToBeEdited.title = newTitle;
       if (newDescription) idToBeEdited.description = newDescription;
-      const filteredArray = blogContent.filter((content) => content.id !== id)
+      const filteredArray = blogContent.filter((content) => content.id !== editedId)
       const unsortedArray = [...filteredArray, idToBeEdited]
       console.log(unsortedArray);
-      setBlogContent(unsortedArray)
-     }
+      setBlogContent(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
+    //  }
     
   }
   
@@ -90,11 +100,13 @@ function App() {
         
         <div className='manageTexts'>
           <label htmlFor='title'>Title:</label>
-          <input type="text" id='title' onChange={handleChange1}/>
+          {/* defaultValue prop makes the input editable */}
+          <input type="text" id='title' onChange={handleChange1} defaultValue={editedTitle}/>
           <label htmlFor='description'>Description:</label>
-          <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2}></textarea>
+          <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2} defaultValue={editedDescription}></textarea>
           <div>
             <button onClick={createPost}>Create</button> 
+            <button onClick={updatePost}>Update</button> 
           </div>
         </div>
       </div>
