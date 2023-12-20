@@ -45,7 +45,7 @@ function App() {
 
   const createPost = () => {
     const newPost = {
-      //if blog content length is 0. if true, write 1, if false, get blog length - 1, use that number as an index point to get the current id then add 1.
+      //is blog content length strictly equal to 0 ? if true, write 1, if false, get blog length - 1, use that number as an index point to get the current id then add 1.
       // [ 0 , 1 , 2 , 3 , 4 ]
       //   1   2   3   4   5
       id: blogContent.length === 0 ? 1 : blogContent[blogContent.length - 1].id + 1,
