@@ -77,6 +77,10 @@ function App() {
     //use find() method to look for the id in the blogContent arrayObject using the editedId variable
     const idToBeEdited = blogContent.find((content) => content.id === editedId)
      console.log(` ${newTitle}success`);
+     //handle the error if theres no input on the fields
+     if (!idToBeEdited) {
+      return alert('Please enter input fields')
+     }
       //if there is newTitle, assign it as title to the idToBeEdited object variable
       if (newTitle) idToBeEdited.title = newTitle;
       //if there is newDescription, assign it as description to the idToBeEdited object variable
@@ -90,7 +94,13 @@ function App() {
       setBlogContent(unsortedArray.sort((a, b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
     }
   
-
+    const clear = () => {
+      this.setState({newTitle: ""});
+      // setEditedTitle('')
+      // setNewTitle('')
+      // setEditedDescription('')
+      // setNewDescription('')
+    }
 
   return (
     <div className="App">
@@ -109,6 +119,7 @@ function App() {
           <div>
             <button onClick={createPost}>Create</button> 
             <button onClick={updatePost}>Update</button> 
+            <button onClick={clear}>Clear</button>
           </div>
         </div>
       </div>
