@@ -39,8 +39,8 @@ function App() {
 
   const handleChange1 = (event) => {
     setNewTitle(event.target.value);
-   
   }
+
   const handleChange2 = (event) => {
     setNewDescription(event.target.value);
   }
