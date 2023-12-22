@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function App() {
   const [blogContent, setBlogContent] = useState([
@@ -35,9 +35,11 @@ function App() {
   const [editedTitle, setEditedTitle] = useState("")
   const [editedDescription, setEditedDescription] = useState("")
   const [editedId, setEditedId] = useState("")
+  const inputRef = useRef(null);
 
   const handleChange1 = (event) => {
     setNewTitle(event.target.value);
+   
   }
   const handleChange2 = (event) => {
     setNewDescription(event.target.value);
@@ -95,13 +97,11 @@ function App() {
     }
   
     const clear = () => {
-      this.setState({newTitle: ""});
-      // setEditedTitle('')
-      // setNewTitle('')
-      // setEditedDescription('')
-      // setNewDescription('')
+      setEditedTitle('')
+      setNewTitle('')
+      inputRef.current.value = "";
     }
-
+    
   return (
     <div className="App">
       <h1>Manage Posts</h1>
@@ -113,7 +113,7 @@ function App() {
         <div className='manageTexts'>
           <label htmlFor='title'>Title:</label>
           {/* defaultValue prop makes the input editable */}
-          <input type="text" id='title' onChange={handleChange1} defaultValue={editedTitle}/>
+          <input type="text" id='title' ref={inputRef} onChange={handleChange1} defaultValue={editedTitle}/>
           <label htmlFor='description'>Description:</label>
           <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2} defaultValue={editedDescription}></textarea>
           <div>
