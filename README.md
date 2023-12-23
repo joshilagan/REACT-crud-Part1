@@ -1,6 +1,6 @@
 # REACT - CRUD - Part 1
 
-This project is a Simple Single Page Blog Manager
+This project is a Simple Single Page Blog Manager which performs CRUD Operation
 
 ## Description
 
