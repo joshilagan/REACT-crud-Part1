@@ -55,7 +55,7 @@ function App() {
       title: newTitle,
       description: newDescription,
     }
-    //use spread operator to combine newPost to blogContent
+    //use spread operator to combine newPost object to blogContent
     setBlogContent([...blogContent, newPost])
   }
 
@@ -110,8 +110,7 @@ function App() {
       <div className='postManagement'>
 
       <section className='left'>
-      <div className='createEdit'>
-        
+      <div className='createEdit'>        
         <div className='manageTexts'>
           <label htmlFor='title'>Title:</label>
           {/* defaultValue prop makes the input editable */}
@@ -127,9 +126,7 @@ function App() {
       </div>
       </section>
 
-
-      <section className='right'>
-        
+      <section className='right'>        
         
           {blogContent.map((task, key)=>{
             return(
@@ -145,7 +142,6 @@ function App() {
           })}         
         
       </section>
-
       </div>
     </div>
   );
