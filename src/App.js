@@ -36,6 +36,7 @@ function App() {
   const [editedDescription, setEditedDescription] = useState("")
   const [editedId, setEditedId] = useState("")
   const inputRef = useRef(null);
+  const inputRef2 = useRef(null)
 
   const handleChange1 = (event) => {
     setNewTitle(event.target.value);
@@ -100,6 +101,7 @@ function App() {
       setEditedTitle('')
       setNewTitle('')
       inputRef.current.value = "";
+      inputRef2.current.value = "";
     }
     
   return (
@@ -115,7 +117,7 @@ function App() {
           {/* defaultValue prop makes the input editable */}
           <input type="text" id='title' ref={inputRef} onChange={handleChange1} defaultValue={editedTitle}/>
           <label htmlFor='description'>Description:</label>
-          <textarea name="" id="description" cols="30" rows="5" onChange={handleChange2} defaultValue={editedDescription}></textarea>
+          <textarea name="" id="description" cols="30" rows="5" ref={inputRef2} onChange={handleChange2} defaultValue={editedDescription}></textarea>
           <div>
             <button onClick={createPost}>Create</button> 
             <button onClick={updatePost}>Update</button> 
