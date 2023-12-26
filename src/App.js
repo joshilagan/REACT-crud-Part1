@@ -74,10 +74,10 @@ const handleKeyPress2 = (e) => {
 
   const dels = (id) => {
     //filter() method will return indexes determined to be true
-    const newContent = blogContent.filter((task)=>{
+    const revContent = blogContent.filter((task)=>{
       return task.id !== id;
     })
-    setBlogContent(newContent)
+    setBlogContent(revContent)
   }
 
   //get the value of the card id, title and description and save it to a variable
