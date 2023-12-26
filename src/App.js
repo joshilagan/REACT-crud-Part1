@@ -37,14 +37,27 @@ function App() {
   const [editedId, setEditedId] = useState("")
   const inputRef = useRef(null);
   const inputRef2 = useRef(null)
-
-  const handleChange1 = (event) => {
-    setNewTitle(event.target.value);
+  const element = <h1>Hello, world!</h1>;
+  console.log(element);
+  // Define a function to handle the input key press
+const handleKeyPress1 = (event) => {
+  // Check if the key is a letter, number or colon
+  if (!/[0-9a-zA-Z:]/.test(event.key)) {
+    // Prevent the default behavior
+    // setNewTitle(e.key);
+    console.log(event.key);
   }
+};
 
-  const handleChange2 = (event) => {
-    setNewDescription(event.target.value);
+ // Define a function to handle the textarea key press
+const handleKeyPress2 = (e) => {
+  // Check if the key is a letter or number
+  if (!/[0-9a-zA-Z]/.test(e.key)) {
+    // Prevent the default behavior
+    setEditedDescription(e.target.value);
+   
   }
+};
 
   const createPost = () => {
     const newPost = {
@@ -69,10 +82,10 @@ function App() {
 
   //get the value of the card id, title and description and save it to a variable
   //set these variables as default values of Input Title and Description Text
-  const edit = (id, title, description) => {   
-    setEditedTitle(title)
-    setEditedDescription(description)
-    setEditedId(id)
+  const edit = (task_id, task_title, task_description) => {   
+    setEditedId(task_id)
+    setEditedTitle(task_title)
+    setEditedDescription(task_description)
   }
 
     // using the info from the edit function, update the blog card
@@ -80,6 +93,9 @@ function App() {
     //use find() method to look for the id in the blogContent arrayObject using the editedId variable
     const idToBeEdited = blogContent.find((content) => content.id === editedId)
      console.log(` ${newTitle}success`);
+     console.log(idToBeEdited);
+     console.log(newTitle);
+     console.log(newDescription);
      //handle the error if theres no input on the fields
      if (!idToBeEdited) {
       return alert('Please enter input fields')
@@ -114,9 +130,23 @@ function App() {
         <div className='manageTexts'>
           <label htmlFor='title'>Title:</label>
           {/* defaultValue prop makes the input editable */}
-          <input type="text" id='title' ref={inputRef} onChange={handleChange1} defaultValue={editedTitle}/>
+          <input
+  type="text"
+  id="title"
+  ref={inputRef}
+  onChange={handleKeyPress1}
+  defaultValue={editedTitle}
+/>
           <label htmlFor='description'>Description:</label>
-          <textarea name="" id="description" cols="30" rows="5" ref={inputRef2} onChange={handleChange2} defaultValue={editedDescription}></textarea>
+          <textarea
+  name=""
+  id="description"
+  cols="30"
+  rows="5"
+  ref={inputRef2}
+  onChange={handleKeyPress2}
+  defaultValue={editedDescription}
+></textarea>
           <div>
             <button onClick={createPost}>Create</button> 
             <button onClick={updatePost}>Update</button> 
